@@ -1,9 +1,7 @@
 import hashlib
 import requests
-import urllib, urllib2
 import time
 import config
-import mechanize
 import re
 import sys
 import json
