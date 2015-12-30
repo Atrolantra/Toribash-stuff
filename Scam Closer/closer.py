@@ -1,5 +1,5 @@
 #!/usr/bin/python
-from Toribash.library.toripy import *
+from Toribash_stuff.library.toripy import *
 
 session = login()
 while True:

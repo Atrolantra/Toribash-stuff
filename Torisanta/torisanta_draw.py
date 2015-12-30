@@ -1,4 +1,4 @@
-from Toribash.library.toripy import *
+from Toribash_stuff.library.toripy import *
 from random import shuffle
 
 session = login()
