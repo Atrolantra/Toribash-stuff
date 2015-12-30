@@ -10,3 +10,5 @@ Python 2.7 is needed to run this. The only other requirement at this time is the
 ### To use
 Clone or download a copy. Then just run the script you want. Some are more complete than others and all core functions can be found in /library/toripy.py.
 The directory where you put the Toribash_stuff folder must be in your python path (environment variable stuff) though so that scripts that use it can successfully import from it. Otherwise just put the script and toripy file in the same directory and edit the script's import line.
+
+Example input and output files are given in folders where they are relevant. Note that these are just used for examples and explanation, if you download or clone this repo you'll need to rename them to omit the '.example' or change the input/output file name in the code (or both).
