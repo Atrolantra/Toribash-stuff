@@ -1,7 +1,2 @@
 *.pyc
 *config.py
-/Fiddler form/fiddlerform.txt
-/Fiddler form/result.txt
-/Fiddler form/result_finished.txt
-/Item sending/send_to_list.txt
-/Torisanta/names.txt
