@@ -1,0 +1,21 @@
+Alt finder:
+Add in getting ips from username.
+Add in getting ips from username and usernames from ip with modcp for more results.
+Think about alt algorithm.
+
+More functions in core:
+
+Market/shop stuff:
+Get item sending with API working. ???
+Market things
+Market stats - expand into bot?
+
+User info lookup (like banned users - make function to check efficiently [25 at a time])
+
+Broadcasts
+
+Itemadmin spawning/bulk buying of items for easy sending, spawning, events etc.
+
+Actions to be taken writer - incorporate with user history (api?) and itemids or something.
+
+Pm parser for paid entry events like lottery. Low priorit. 

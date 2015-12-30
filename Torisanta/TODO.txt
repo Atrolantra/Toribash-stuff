@@ -1,0 +1,2 @@
+Add in function to check for alts maybe?
+Add in removing people if last activity more than 2 days ago. (Compliments banned user removing).
