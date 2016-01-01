@@ -200,3 +200,4 @@ def login(mode = None):
         print "Logging in."
         login_result = login_session.post(BASE_URL + '/login.php?do=login', payload)
         return login_session
+        

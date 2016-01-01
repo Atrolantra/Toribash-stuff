@@ -7,3 +7,4 @@ for name in findNames(session, 'ip'):
 
 for name in alts:
 	banUser(session, name, 'ban reason', 'ban length')
+	
