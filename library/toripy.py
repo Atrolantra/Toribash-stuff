@@ -112,7 +112,7 @@ def sendItem(session, itemid, recipient, override=False, shop_admin=False, omit_
     'userid': '436450',
     'to_username': recipient,
     'message' : '',
-    'giftid[]': itemid # If multiple items are to be sent then the itemid argument should be a list with the itemids as strings within.
+    'giftid[]': str(itemid) # If multiple items are to be sent then the itemid argument should be a list with the itemids as strings within.
     }
 
     # Handle extra non default tsa options.
