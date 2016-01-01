@@ -157,7 +157,7 @@ def banUser(session, name, reason, length):
     }
 
     # Actually do the ban.
-    print "Banning user."
+    print ("Banning user %s" % name)
     r = session.post(BASE_URL + '/modcp/banning.php?do=dobanuser', payload)
 
 # Get a token needed for official Toribash API stuff.
