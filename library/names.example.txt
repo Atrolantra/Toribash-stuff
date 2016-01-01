@@ -1,0 +1,1 @@
+Put the names of users to ban here, one per line.
