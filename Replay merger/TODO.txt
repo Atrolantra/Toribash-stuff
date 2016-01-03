@@ -1,6 +1,1 @@
-Merged now has the two parsed replays which contain only the new game line and the moves made by the player (Tori bout 0)
-
-Need to:
-Merge the moves in chronological order.
-Query user for file name.
-Save merged file.
+Done
