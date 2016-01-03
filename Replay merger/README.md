@@ -1,4 +1,4 @@
-###Toribash Replay Merger
+#Toribash Replay Merger
 
 ##Requirements
 Python 2.7.10 (though you can probably get away with a few version below too if you're really keen...)
