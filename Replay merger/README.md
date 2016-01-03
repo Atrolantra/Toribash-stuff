@@ -20,6 +20,14 @@ The script assumes that both players are playing as the Tori bout (the default c
 
 The script should be able to handle any mod or settings so there's no need to set a limit on turn frames or anything like that unless you want to.
 
+##Example
+I have included three replays in this directory:  
+*tori_replay1.rpl*  
+*tori_replay2.rpl*  
+*Solax v Solax merged.rpl*  
+
+The first two are stand alone files I made of me doing some random moves as Tori. These were then fed into the script and the third file was produced. Feel free to watch all three to get a better idea of how this looks and works in practice.
+
 ##How It Works (If you're interested)
 If you're curious about how it works and don't want to read my (lovingly commented) python code then this is the section for you.
 
