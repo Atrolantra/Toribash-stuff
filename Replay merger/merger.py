@@ -95,7 +95,7 @@ def merge(replay1, replay2):
 				continue
 
 	player1 = merged_replay_lines[1].split('; ')[1]
-	player2 = merged_replay_lines[1].split('; ')[1]
+	player2 = merged_replay_lines[2].split('; ')[1]
 	output = open('%s v %s merged.rpl' % (player1, player2), 'w')
 	for line in merged_replay_lines:
 		output.write(line + '\n')
