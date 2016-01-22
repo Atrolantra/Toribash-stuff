@@ -1,17 +1,14 @@
-def chooseFiles():
-	try: 
-		replay1 = (raw_input("Input file path link for first replay: "))
-		replay1open = open(replay1, 'r+')
-		replay2 = (raw_input("Input file path link for second replay: "))
-		while replay2 == replay1:
-			print "Replay 2 may not be the same as replay 1."
-			replay2 = (raw_input("Input file path link for second replay: "))
-		replay2open = open(replay2, 'r+')
+from Tkinter import Tk
+import tkMessageBox
+from tkFileDialog import askopenfilename, askdirectory
 
-	except IOError as error: 
-		print str(error) + '\nTry again.'
-		return chooseFiles()
-	return (replay1open, replay2open)
+
+
+def chooseFiles():
+	Tk().withdraw() # We don't want a full GUI, so keep the root window from appearing.
+	filename = askopenfilename(title="Select a replay file", filetypes=[("Replay files", ".rpl")]) 
+	return open(filename, 'r+')
+
 
 def parse(replay, number=1):
 	lines = replay.read().splitlines()
@@ -96,13 +93,15 @@ def merge(replay1, replay2):
 
 	player1 = merged_replay_lines[1].split('; ')[1]
 	player2 = merged_replay_lines[2].split('; ')[1]
-	output = open('%s v %s merged.rpl' % (player1, player2), 'w')
+	out_file_address = askdirectory(title="Choose save file location")
+	output = open(out_file_address + '\%s v %s merged.rpl' % (player1, player2), 'w')
 	for line in merged_replay_lines:
 		output.write(line + '\n')
 	print "Merged replay into file: \'%s v %s merged.rpl\'" % (player1, player2)
 
 
-replay1, replay2 = chooseFiles()
+replay1 = chooseFiles()
+replay2 = chooseFiles()
 merge(replay1, replay2)
 
 # From testing.
