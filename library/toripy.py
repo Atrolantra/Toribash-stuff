@@ -76,7 +76,7 @@ def getTitle(session, page):
     return title.group(1)
 
 # Post a message.
-def postMessage(session, lastpost, message, s, securitytoken, thread):
+def postMessage(session, message, thread):
     page =  session.get(thread)
     t = getThreadNum(thread)
     s = getS(session, page)
@@ -85,7 +85,7 @@ def postMessage(session, lastpost, message, s, securitytoken, thread):
 
     payload = {
     'ajax': '1',
-    'ajax_lastpost': lastpost,
+    'ajax_lastpost': last_post,
     'do': 'postreply',
     'fromquickreply': '1',
     'loggedinuser': '436450',
