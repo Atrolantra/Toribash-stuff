@@ -112,7 +112,7 @@ def sendItem(session, itemid, recipient, override=False, shop_admin=False, omit_
     'userid': '436450',
     'to_username': recipient,
     'message' : '',
-    'giftid[]': str(itemid) # If multiple items are to be sent then the itemid argument should be a list with the itemids as strings within.
+    'giftid[]': itemid # If multiple items are to be sent then the itemid argument should be a list with the itemids as strings within.
     }
 
     # Handle extra non default tsa options.
@@ -127,6 +127,16 @@ def sendItem(session, itemid, recipient, override=False, shop_admin=False, omit_
 
     r = session.post(BASE_URL + '/tori_utilities.php', payload)
     print "Sent item to %s" % (recipient)
+
+# Generate items.
+def spawn(session, itemid, number):
+    payload = {
+    'check[]': [itemid] * number,
+    'multibuy': 'Buy Now',
+    }
+
+    r = session.post(BASE_URL + '/tori_shop_item.php?id=%s' % (itemid), payload)
+    print "Spawned %s of %s" % (number, itemid)
 
 # Find usernames by ip.
 def findNames(session, ip):
@@ -200,4 +210,22 @@ def login(mode = None):
         print "Logging in."
         login_result = login_session.post(BASE_URL + '/login.php?do=login', payload)
         return login_session
-        
+
+# Return a list of all items in a user's inventory.
+def getInventory(session, token, user):
+    items = []
+    offset = 0
+    while True:
+
+        data = session.get(BASE_URL + '/bank_ajax.php', params={
+            'bank_ajax': 'get_inventory',
+            'username': user,
+            'offset': offset,
+            'token': token
+        }).json()
+        offset += data['inventory']['max_items_per_request']
+
+        items.extend(i for i in data['inventory']['items'])
+        if offset > data['inventory']['total_user_items']:
+            break 
+    return items
