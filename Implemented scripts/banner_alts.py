@@ -1,4 +1,4 @@
-from toripy import *
+from Toribash_stuff.toripy.toripy import *
 session = login('mod')
 name_list = findNames(session, "ip here")
 for x in name_list:

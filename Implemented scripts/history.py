@@ -1,4 +1,4 @@
-from toripy import *
+from Toribash_stuff.library.toripy import *
 
 session = login()
 token = getToken(session)

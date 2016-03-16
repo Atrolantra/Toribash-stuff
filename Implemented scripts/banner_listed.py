@@ -1,8 +1,8 @@
-from toripy import *
+from Toribash_stuff.library.toripy import *
 session = login('mod')
 names = open('names.txt', 'r')
 
-for name in names.read.splitlines():
+for name in names.read().splitlines():
 	banUser(session, name, 'Reason', 'Length')
 	
 	
