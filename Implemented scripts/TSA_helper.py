@@ -10,7 +10,7 @@ with open("shopping.txt", 'r') as shoppingList:
     data = [map(int, line.split()) for line in shoppingList]
 
 for item in data:
-	spawn(session, item[0], item[1])
+    spawn(session, item[0], item[1])
 
 # Take snapshot of inventory after spawning.
 items = getInventory(session, token, config.username)

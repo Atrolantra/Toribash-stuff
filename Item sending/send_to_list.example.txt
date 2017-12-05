@@ -1,1 +1,0 @@
-Put the list of users to send the item to here, one per line.
