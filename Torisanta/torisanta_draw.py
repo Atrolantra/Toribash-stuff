@@ -1,4 +1,4 @@
-from Toribash_stuff.library.toripy import *
+from toripy import *
 from random import shuffle
 
 session = login()
@@ -8,9 +8,9 @@ token = session.get(BASE_URL + '/bank_ajax.php?bank_ajax=get_token').json()['tok
 
 # Open the list of names and read them into a list.
 users = open('names.txt').read().splitlines()
-to_remove = []
 
 # Go through all users and removed banned ones from the event.
+# Check in batches of the API max of 25 at a time for efficiency.
 for i in range(0, len(users), 25):
     # Get the user data of entrants.
     data = session.get(BASE_URL + '/bank_ajax.php', params={
@@ -19,33 +19,26 @@ for i in range(0, len(users), 25):
         'token': token
     }).json()
 
-    # If they're banned, queue them up to be removed.
+    # If they're banned, remove them.
     for y in data['users']:
-        if y['is_banned'] == True:
-            to_remove.append(y['username'])
+        if y['is_banned']:
+            users.remove(y['username'])
 
-# Go through the list of users to be removed and take them off the list.
-for user in to_remove:
-    users.remove(user)
-
-print users
+sent_counter = 0
+total = len(users)
 
 # Shuffle the ordering of the list.
 # Then use a sliding window of size 2 to join all the names up into a big circle.
 shuffle(users)
 file = open('giving.txt', 'w')
 for x in range (len(users) - 1):
-	file.write("%s gives to %s" % (users[x], users[x + 1]))
-file.write("%s gives to %s" % (users[-1], users[0]))
-
-Send the pms.
-exchanges = open("giving.txt", "r").read().splitlines()
-sent_counter = 0
-total = len(exchanges)
-for line in exchanges:
-    names = line.split(" gives to ")
-    pm_recipient = names[0]
-    present_to = names[1]
-    sendPm(pm_recipient, 'Secret Santa', 'You send your secret santa gift to the user %s.' % (present_to)) 
+    file.write("%s gives to %s\n" % (users[x], users[x + 1]))
+    sendPm(session, users[x], 'Secret Santa', 'You send your secret santa gift to the user %s.' % (users[x + 1]))
     sent_counter += 1
     print "Sent %i of %i" % (sent_counter, total)
+file.write("%s gives to %s\n" % (users[-1], users[0]))
+sendPm(session, users[-1], 'Secret Santa', 'You send your secret santa gift to the user %s.' % (users[0]))
+sent_counter += 1
+print "Sent %i of %i" % (sent_counter, total)
+
+file.close()
